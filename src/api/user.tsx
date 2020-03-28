@@ -16,4 +16,12 @@ export default class UserApi {
             return users
         })
     }
+
+    add(name: string, label: string) {
+        let data = {
+            "name": name,
+            "label": label
+        }
+        return this.api.post('/user/add', data)
+    }
 }

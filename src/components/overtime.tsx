@@ -3,6 +3,7 @@ import UserList from './user-list'
 import { User } from '../models/user'
 import UserApi from '../api/user'
 import OvertimeApi from '../api/overtime'
+import AddUser from './add-user';
 
 interface OvertimeState {
     all: User[]
@@ -48,6 +49,7 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
 
     render() {
         return <div>
+            <AddUser onAdd={() => { this.loadAll() }} />
             <h3>所有人:</h3>
             <UserList users={this.state.all} itemClickHandle={(user) => this.onClickItemOfAll(user)} />
             <h3>今日加班:</h3>
