@@ -9,7 +9,7 @@ export default class OvertimeApi {
     }
 
     joinToday(userID: number) {
-        this.api.post("/overtime/join", { user_id: userID })
+        return this.api.post("/overtime/join", { user_id: userID })
     }
 
     todayList() {

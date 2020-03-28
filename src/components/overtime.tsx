@@ -29,7 +29,6 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
         let api = new UserApi()
         api.all()
             .then((response) => {
-                // 这个设置和使用js的时候是一样的
                 this.setState({ all: response })
             })
     }
@@ -38,14 +37,20 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
         let api = new OvertimeApi()
         api.todayList()
             .then((response) => {
-                // 这个设置和使用js的时候是一样的
                 this.setState({ overtime: response })
             })
     }
 
+    onClickItemOfAll(user: User) {
+        let api = new OvertimeApi()
+        api.joinToday(user.id).then(() => this.loadToday())
+    }
+
     render() {
         return <div>
-            <UserList users={this.state.all} />
+            <h3>所有人:</h3>
+            <UserList users={this.state.all} itemClickHandle={(user) => this.onClickItemOfAll(user)} />
+            <h3>今日加班:</h3>
             <UserList users={this.state.overtime} />
         </div>
     }

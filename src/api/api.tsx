@@ -9,12 +9,12 @@ export default class Api {
     }
     async post(path: string, data: any) {
         const response = await fetch(this.apiUrl(path), {
-            body: JSON.stringify(data),
+            body: data && JSON.stringify(data),
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             },
             method: 'POST'
-        }).then(response => response.json())
+        })
         return await response
     }
 }
