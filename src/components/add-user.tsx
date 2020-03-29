@@ -42,14 +42,30 @@ export default class AddUser extends React.Component<Props, State> {
         }
 
         let api = new UserApi()
-        api.add(name, label).then(() => { this.props.onAdd && this.props.onAdd() })
+        api.add(name, label).then(() => {
+            this.props.onAdd && this.props.onAdd()
+            this.setState({
+                inputName: "",
+                inputLabel: ""
+            })
+        })
     }
 
     render() {
         return <div>
-            姓名: <Input onChange={(e) => this.onInputName(e.target.value)} />
-            标签: <Input onChange={(e) => this.onInputLabel(e.target.value)} />
-            <Button variant="contained" color="primary" onClick={() => this.add()}>添加</Button>
+            姓名: <Input
+                value={this.state.inputName}
+                onChange={(e) => this.onInputName(e.target.value)}
+            />
+            标签: <Input
+                value={this.state.inputLabel}
+                onChange={(e) => this.onInputLabel(e.target.value)}
+            />
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={() => this.add()}
+            >添加</Button>
         </div>
     }
 }
