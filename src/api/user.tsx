@@ -17,10 +17,11 @@ export default class UserApi {
         })
     }
 
-    add(name: string, label: string) {
+    add(name: string, label: string, nick: string) {
         let data = {
             "name": name,
-            "label": label
+            "label": label,
+            "nick": nick,
         }
         return this.api.post('/user/add', data)
     }
