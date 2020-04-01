@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Overtime from './components/overtime'
+import Overtime from './components/overtime/overtime'
 
 // ========================================
 
