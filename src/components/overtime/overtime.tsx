@@ -7,18 +7,20 @@ import AddUser from '../add-user/add-user';
 import { Box, Snackbar } from '@material-ui/core';
 import classes from './overtime.module.scss';
 import classNames from 'classnames';
+import { showNoticeDialog } from '../dialog-notice/dialog-notice';
 
 interface OvertimeState {
     all: User[]
     overtime: User[]
     isShowWarn: boolean
+    snakeMsg: string
 }
 
 export default class Overtime extends React.Component<{}, OvertimeState> {
 
     constructor(props: {}) {
         super(props)
-        this.state = { all: [], overtime: [], isShowWarn: false }
+        this.state = { all: [], overtime: [], isShowWarn: false, snakeMsg: "" }
     }
 
     componentDidMount() {
@@ -48,17 +50,20 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
 
     onClickItemOfAll(user: User) {
         let api = new OvertimeApi()
-        api.joinToday(user.id).then(() => this.loadToday())
+        api.joinToday(user.id).then(() => {
+            this.loadToday()
+            this.setState({ isShowWarn: true, snakeMsg: `${user.name} 今天加班` })
+        })
     }
 
     copyTodayUsers() {
         if (this.state.overtime.length === 0) {
-            alert("今天没人加班")
+            showNoticeDialog("今天没人加班")
             return
         }
         const list = this.state.overtime.map((user) => user.name).join(",")
         navigator.clipboard.writeText(`加班人员: ${list}`)
-        this.setState({ isShowWarn: true })
+        this.setState({ isShowWarn: true, snakeMsg: "加班名单拷贝完成" })
     }
 
     onWarnClose() {
@@ -90,8 +95,8 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
             <Snackbar
                 open={this.state.isShowWarn}
                 onClose={this.onWarnClose.bind(this)}
-                autoHideDuration={3000}
-                message="加班名单拷贝完成"
+                autoHideDuration={1000}
+                message={this.state.snakeMsg}
             />
             <div id="dialog" />
         </div>
