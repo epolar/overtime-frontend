@@ -1,11 +1,11 @@
 import React from 'react'
 import UserApi from '../../api/user'
 import { Input, Button } from '@material-ui/core'
+import { showNoticeDialog } from '../dialog-notice/dialog-notice'
 
 interface Props {
     onAdd?: () => any
 }
-
 
 interface State {
     inputName: string
@@ -39,17 +39,17 @@ export default class AddUser extends React.Component<Props, State> {
     add() {
         const name = this.state.inputName
         if (name.length === 0) {
-            alert("请输入姓名")
+            showNoticeDialog("请输入姓名")
             return
         }
         const label = this.state.inputLabel
         if (label.length === 0) {
-            alert("请输入标签")
+            showNoticeDialog("请输入标签")
             return
         }
         const nick = this.state.inputNick
-        if (label.length === 0) {
-            alert("请输入昵称")
+        if (nick.length === 0) {
+            showNoticeDialog("请输入昵称")
             return
         }
 

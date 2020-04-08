@@ -93,6 +93,7 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
                 autoHideDuration={3000}
                 message="加班名单拷贝完成"
             />
+            <div id="dialog" />
         </div>
     }
 }
