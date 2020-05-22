@@ -93,7 +93,7 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
             <AddUser onAdd={() => { this.loadAll() }} />
             <LastOvertime
                 user={this.state.lastUser}
-                overtimeHandler={this.userOvertime}
+                overtimeHandler={this.userOvertime.bind(this)}
                 notMeHandler={this.delLastUser.bind(this)}
             />
             <Box className={containerStyle}>
