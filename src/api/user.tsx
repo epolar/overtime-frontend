@@ -25,4 +25,9 @@ export default class UserApi {
         }
         return this.api.post('/user/add', data)
     }
+
+    del(id: number) {
+        return this.api.delete(`/user/${id}`)
+    }
+
 }

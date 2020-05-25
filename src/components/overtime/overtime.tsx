@@ -3,12 +3,11 @@ import UserList from '../user-list/user-list';
 import { User } from '../../models/user';
 import UserApi from '../../api/user';
 import OvertimeApi from '../../api/overtime';
-import AddUser from '../add-user/add-user';
 import LastOvertime from '../last-overtime/last-overtime';
 import { Box, Snackbar } from '@material-ui/core';
 import classes from './overtime.module.scss';
 import classNames from 'classnames';
-import { showNoticeDialog } from '../dialog-notice/dialog-notice';
+import { showNoticeDialog } from '../dialog/notice';
 import LastOvertimeRepo from '../../repo/last-overtime'
 
 interface OvertimeState {
@@ -90,7 +89,6 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
             classes.clickable,
         )
         return <div>
-            <AddUser onAdd={() => { this.loadAll() }} />
             <LastOvertime
                 user={this.state.lastUser}
                 overtimeHandler={this.userOvertime.bind(this)}

@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Dialog, DialogContentText, Button } from '@material-ui/core'
+import React from 'react';
+import { dismiss, show } from './action';
+import { Dialog, DialogContentText, Button } from '@material-ui/core';
 
 interface props {
     message: string
@@ -19,10 +19,7 @@ export default class DialogNotice extends React.Component<props, state> {
 
     close() {
         this.setState({ open: false })
-        ReactDOM.render(
-            <div id="dialog" />,
-            document.getElementById("dialog")
-        )
+        dismiss()
     }
 
     render() {
@@ -39,8 +36,5 @@ export default class DialogNotice extends React.Component<props, state> {
 }
 
 export function showNoticeDialog(message: string) {
-    ReactDOM.render(
-        <DialogNotice message={message} />,
-        document.getElementById("dialog")
-    )
+    show(<DialogNotice message={message} />)
 }

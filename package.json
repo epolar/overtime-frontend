@@ -15,6 +15,7 @@
     "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "^3.8.3"
   },
@@ -40,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.1.5",
     "css-loader": "^3.4.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",

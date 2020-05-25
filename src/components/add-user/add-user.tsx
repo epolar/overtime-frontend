@@ -1,7 +1,7 @@
 import React from 'react'
 import UserApi from '../../api/user'
 import { Input, Button } from '@material-ui/core'
-import { showNoticeDialog } from '../dialog-notice/dialog-notice'
+import { showNoticeDialog } from '../dialog/notice'
 
 interface Props {
     onAdd?: () => any

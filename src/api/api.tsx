@@ -5,7 +5,7 @@ export default class Api {
 
     async get(path: string) {
         const response = await fetch(this.apiUrl(path)).then(response => response.json())
-        return await response
+        return response
     }
     async post(path: string, data: any) {
         const response = await fetch(this.apiUrl(path), {
@@ -15,6 +15,12 @@ export default class Api {
             },
             method: 'POST'
         })
-        return await response
+        return response
+    }
+    async delete(path: string) {
+        const response = await fetch(this.apiUrl(path), {
+            method: 'DELETE',
+        })
+        return response
     }
 }

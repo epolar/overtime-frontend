@@ -10,10 +10,6 @@ interface Props {
 
 export default class LastOvertime extends React.Component<Props> {
 
-    constructor(props: Props) {
-        super(props)
-    }
-
     onClickOvertimeClick() {
         if (this.props.user !== undefined) {
             this.props.overtimeHandler?.(this.props.user)
