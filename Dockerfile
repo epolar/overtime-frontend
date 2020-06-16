@@ -1,7 +1,7 @@
 FROM node as builder
 WORKDIR /app
 COPY . .
-RUN npm run build
+RUN yarn && yarn run build
 
 FROM node
 RUN npm install -g serve
