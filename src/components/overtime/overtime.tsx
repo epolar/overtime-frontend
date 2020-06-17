@@ -9,6 +9,7 @@ import classes from './overtime.module.scss';
 import classNames from 'classnames';
 import { showNoticeDialog } from '../dialog/notice';
 import LastOvertimeRepo from '../../repo/last-overtime'
+import copy from "copy-to-clipboard";
 
 interface OvertimeState {
     all: User[]
@@ -68,7 +69,7 @@ export default class Overtime extends React.Component<{}, OvertimeState> {
             return
         }
         const list = this.state.overtime.map((user) => user.name).join(",")
-        navigator.clipboard.writeText(`加班人员: ${list}`)
+        copy(`加班人员: ${list}`)
         this.setState({ isShowWarn: true, snakeMsg: "加班名单拷贝完成" })
     }
 
